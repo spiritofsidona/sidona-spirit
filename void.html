@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>THE VOID</title>
+
+<style>
+body{
+margin:0;
+font-family:Georgia,serif;
+color:#e6e1dc;
+background:#000;
+overflow-x:hidden;
+overflow-y:auto;
+position:relative;
+line-height:1.9;
+min-height:100vh;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:-12%;
+background:
+radial-gradient(circle at 6% 18%, rgba(120,70,160,.15) 0%, transparent 32%),
+radial-gradient(circle at 92% 16%, rgba(70,120,170,.10) 0%, transparent 34%),
+radial-gradient(circle at 14% 88%, rgba(65,95,160,.11) 0%, transparent 36%),
+radial-gradient(circle at 88% 84%, rgba(135,70,135,.10) 0%, transparent 38%),
+radial-gradient(circle at 58% 34%, rgba(90,65,150,.10) 0%, transparent 40%),
+radial-gradient(circle at 30% 62%, rgba(150,55,120,.07) 0%, transparent 38%),
+radial-gradient(circle at 70% 62%, rgba(120,175,150,.045) 0%, transparent 40%),
+linear-gradient(135deg, rgba(14,10,35,.50), rgba(5,18,35,.32), rgba(28,8,30,.26), rgba(0,0,0,.98));
+animation:voidBreathBackground 24s ease-in-out infinite;
+z-index:-7;
+}
+
+.star-layer-one{
+position:fixed;
+inset:-10%;
+background-image:
+radial-gradient(circle at 2% 4%, white .38px, transparent .75px),
+radial-gradient(circle at 5% 18%, white .38px, transparent .75px),
+radial-gradient(circle at 8% 32%, white .38px, transparent .75px),
+radial-gradient(circle at 11% 48%, white .38px, transparent .75px),
+radial-gradient(circle at 14% 66%, white .38px, transparent .75px),
+radial-gradient(circle at 17% 82%, white .38px, transparent .75px),
+radial-gradient(circle at 20% 12%, white .38px, transparent .75px),
+radial-gradient(circle at 23% 29%, white .38px, transparent .75px),
+radial-gradient(circle at 26% 44%, white .38px, transparent .75px),
+radial-gradient(circle at 29% 59%, white .38px, transparent .75px),
+radial-gradient(circle at 32% 76%, white .38px, transparent .75px),
+radial-gradient(circle at 35% 91%, white .38px, transparent .75px),
+radial-gradient(circle at 38% 9%, white .38px, transparent .75px),
+radial-gradient(circle at 41% 25%, white .38px, transparent .75px),
+radial-gradient(circle at 44% 41%, white .38px, transparent .75px),
+radial-gradient(circle at 47% 57%, white .38px, transparent .75px),
+radial-gradient(circle at 50% 73%, white .38px, transparent .75px),
+radial-gradient(circle at 53% 89%, white .38px, transparent .75px),
+radial-gradient(circle at 56% 6%, white .38px, transparent .75px),
+radial-gradient(circle at 59% 22%, white .38px, transparent .75px),
+radial-gradient(circle at 62% 38%, white .38px, transparent .75px),
+radial-gradient(circle at 65% 54%, white .38px, transparent .75px),
+radial-gradient(circle at 68% 70%, white .38px, transparent .75px),
+radial-gradient(circle at 71% 86%, white .38px, transparent .75px),
+radial-gradient(circle at 74% 15%, white .38px, transparent .75px),
+radial-gradient(circle at 77% 31%, white .38px, transparent .75px),
+radial-gradient(circle at 80% 47%, white .38px, transparent .75px),
+radial-gradient(circle at 83% 63%, white .38px, transparent .75px),
+radial-gradient(circle at 86% 79%, white .38px, transparent .75px),
+radial-gradient(circle at 89% 95%, white .38px, transparent .75px),
+radial-gradient(circle at 92% 11%, white .38px, transparent .75px),
+radial-gradient(circle at 95% 36%, white .38px, transparent .75px),
+radial-gradient(circle at 98% 68%, white .38px, transparent .75px);
+opacity:.6;
+animation:moveStarsSlow 130s linear infinite, twinkleSoft 9s ease-in-out infinite;
+z-index:-6;
+}
+
+.star-layer-two{
+position:fixed;
+inset:-10%;
+background-image:
+radial-gradient(circle at 4% 8%, white .7px, transparent 1px),
+radial-gradient(circle at 9% 28%, white .6px, transparent 1px),
+radial-gradient(circle at 13% 76%, white .8px, transparent 1px),
+radial-gradient(circle at 18% 42%, white .7px, transparent 1px),
+radial-gradient(circle at 24% 88%, white .8px, transparent 1px),
+radial-gradient(circle at 30% 18%, white .7px, transparent 1px),
+radial-gradient(circle at 36% 67%, white .6px, transparent 1px),
+radial-gradient(circle at 41% 52%, white .8px, transparent 1px),
+radial-gradient(circle at 48% 92%, white .7px, transparent 1px),
+radial-gradient(circle at 52% 14%, white .8px, transparent 1px),
+radial-gradient(circle at 58% 48%, white .6px, transparent 1px),
+radial-gradient(circle at 63% 82%, white .8px, transparent 1px),
+radial-gradient(circle at 70% 43%, white .7px, transparent 1px),
+radial-gradient(circle at 76% 20%, white .8px, transparent 1px),
+radial-gradient(circle at 81% 72%, white .8px, transparent 1px),
+radial-gradient(circle at 88% 35%, white .7px, transparent 1px),
+radial-gradient(circle at 93% 63%, white .8px, transparent 1px),
+radial-gradient(circle at 97% 12%, white .6px, transparent 1px),
+radial-gradient(circle at 6% 44%, white .7px, transparent 1px),
+radial-gradient(circle at 16% 15%, white .6px, transparent 1px),
+radial-gradient(circle at 21% 63%, white .8px, transparent 1px),
+radial-gradient(circle at 27% 31%, white .6px, transparent 1px),
+radial-gradient(circle at 34% 79%, white .7px, transparent 1px),
+radial-gradient(circle at 39% 11%, white .8px, transparent 1px),
+radial-gradient(circle at 46% 38%, white .6px, transparent 1px),
+radial-gradient(circle at 51% 66%, white .8px, transparent 1px),
+radial-gradient(circle at 57% 24%, white .7px, transparent 1px),
+radial-gradient(circle at 64% 57%, white .6px, transparent 1px),
+radial-gradient(circle at 69% 12%, white .8px, transparent 1px),
+radial-gradient(circle at 74% 76%, white .7px, transparent 1px),
+radial-gradient(circle at 79% 51%, white .6px, transparent 1px),
+radial-gradient(circle at 86% 87%, white .8px, transparent 1px),
+radial-gradient(circle at 91% 22%, white .7px, transparent 1px),
+radial-gradient(circle at 96% 41%, white .6px, transparent 1px),
+radial-gradient(circle at 3% 92%, white .7px, transparent 1px),
+radial-gradient(circle at 11% 58%, white .6px, transparent 1px),
+radial-gradient(circle at 19% 6%, white .8px, transparent 1px),
+radial-gradient(circle at 28% 97%, white .7px, transparent 1px),
+radial-gradient(circle at 43% 3%, white .6px, transparent 1px),
+radial-gradient(circle at 61% 96%, white .7px, transparent 1px),
+radial-gradient(circle at 73% 5%, white .8px, transparent 1px),
+radial-gradient(circle at 89% 96%, white .7px, transparent 1px);
+opacity:.76;
+animation:moveStarsMedium 75s linear infinite, twinkle 8s ease-in-out infinite;
+z-index:-5;
+}
+
+.star-layer-three{
+position:fixed;
+inset:-10%;
+background-image:
+radial-gradient(circle at 7% 67%, white 1.1px, transparent 1.6px),
+radial-gradient(circle at 15% 31%, white 1px, transparent 1.5px),
+radial-gradient(circle at 22% 93%, white 1.2px, transparent 1.6px),
+radial-gradient(circle at 29% 58%, white 1px, transparent 1.5px),
+radial-gradient(circle at 37% 6%, white 1.15px, transparent 1.6px),
+radial-gradient(circle at 44% 83%, white 1px, transparent 1.5px),
+radial-gradient(circle at 50% 27%, white 1.2px, transparent 1.7px),
+radial-gradient(circle at 61% 71%, white 1px, transparent 1.5px),
+radial-gradient(circle at 68% 9%, white 1.1px, transparent 1.6px),
+radial-gradient(circle at 77% 55%, white 1.2px, transparent 1.7px),
+radial-gradient(circle at 84% 96%, white 1px, transparent 1.5px),
+radial-gradient(circle at 92% 46%, white 1.15px, transparent 1.6px),
+radial-gradient(circle at 98% 81%, white 1px, transparent 1.5px),
+radial-gradient(circle at 5% 23%, white 1px, transparent 1.5px),
+radial-gradient(circle at 19% 74%, white 1.1px, transparent 1.6px),
+radial-gradient(circle at 33% 36%, white 1px, transparent 1.5px),
+radial-gradient(circle at 55% 90%, white 1.15px, transparent 1.6px),
+radial-gradient(circle at 73% 34%, white 1px, transparent 1.5px),
+radial-gradient(circle at 90% 13%, white 1.1px, transparent 1.6px);
+opacity:.82;
+animation:moveStarsFast 48s linear infinite, twinkleBright 6s ease-in-out infinite;
+z-index:-4;
+}
+
+.large-stars{
+position:fixed;
+inset:0;
+background-image:
+radial-gradient(circle at 12% 19%, rgba(255,255,255,.95) 1.6px, transparent 2.2px),
+radial-gradient(circle at 31% 44%, rgba(255,255,255,.85) 1.4px, transparent 2px),
+radial-gradient(circle at 56% 18%, rgba(255,255,255,.9) 1.7px, transparent 2.4px),
+radial-gradient(circle at 72% 63%, rgba(255,255,255,.82) 1.5px, transparent 2.1px),
+radial-gradient(circle at 87% 28%, rgba(255,255,255,.9) 1.6px, transparent 2.3px),
+radial-gradient(circle at 42% 78%, rgba(255,255,255,.8) 1.4px, transparent 2.1px),
+radial-gradient(circle at 95% 88%, rgba(255,255,255,.86) 1.5px, transparent 2.2px),
+radial-gradient(circle at 18% 91%, rgba(255,255,255,.8) 1.4px, transparent 2.1px),
+radial-gradient(circle at 66% 39%, rgba(255,255,255,.86) 1.5px, transparent 2.2px);
+opacity:.56;
+animation:largeStarDrift 90s linear infinite, twinkleBright 7s ease-in-out infinite;
+z-index:-3;
+}
+
+
+.neptune{
+position:fixed;
+left:10%;
+top:14%;
+width:270px;
+height:270px;
+border-radius:50%;
+background:
+radial-gradient(circle at 32% 28%, rgba(205,230,255,.50), rgba(85,125,195,.40) 24%, rgba(28,50,115,.72) 62%, rgba(5,10,30,.96) 100%);
+box-shadow:
+0 0 90px rgba(80,120,200,.20),
+0 0 145px rgba(80,120,200,.10),
+inset -48px -38px 62px rgba(0,0,0,.62);
+filter:blur(.55px);
+opacity:.44;
+z-index:0;
+}
+
+.neptune::after{
+content:"";
+position:absolute;
+inset:82px -32px auto -32px;
+height:22px;
+background:rgba(210,230,255,.10);
+border-radius:50%;
+transform:rotate(-12deg);
+filter:blur(2.5px);
+}
+
+.neptune::before{
+content:"";
+position:absolute;
+inset:-34px;
+border-radius:50%;
+background:rgba(90,130,220,.07);
+filter:blur(24px);
+}
+
+.container{
+max-width:750px;
+margin:0 auto;
+padding:100px 24px;
+position:relative;
+z-index:2;
+}
+
+.title{
+text-align:center;
+font-size:20px;
+letter-spacing:4px;
+font-weight:normal;
+opacity:.8;
+animation:breatheText 12s ease-in-out infinite;
+transition:.8s;
+}
+
+.title:hover{
+transform:scale(1.03);
+text-shadow:0 0 22px rgba(255,255,255,.25);
+}
+
+.poem{
+width:420px;
+
+margin-left:auto;
+margin-right:180px;
+
+margin-top:5px;
+margin-bottom:140px;
+
+text-align:right;
+
+opacity:.75;
+
+position:relative;
+z-index:3;
+}
+
+.poem h2{
+font-size:13px;
+font-weight:normal;
+letter-spacing:2px;
+text-align:right;
+}
+
+.poem p{
+font-size:12px;
+text-align:right;
+}
+
+.back{
+position:fixed;
+bottom:24px;
+left:24px;
+font-size:12px;
+letter-spacing:2px;
+opacity:.65;
+text-decoration:none;
+color:rgb(172,130,255);
+transition:.6s;
+z-index:10;
+text-shadow:
+0 0 8px rgba(140,90,255,.25),
+0 0 16px rgba(140,90,255,.15);
+}
+
+.back:hover{
+opacity:1;
+color:rgb(210,190,255);
+text-shadow:
+0 0 10px rgba(180,120,255,.5),
+0 0 22px rgba(180,120,255,.3);
+transform:translateX(3px);
+}
+
+.mute-btn{
+position:fixed;
+top:12px;
+right:12px;
+z-index:9999;
+padding:6px 10px;
+font-size:9px;
+letter-spacing:2px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.15);
+color:#e8e6e3;
+font-family:Georgia,serif;
+cursor:pointer;
+transition:.6s;
+}
+
+.mute-btn:hover{
+background:rgba(255,255,255,.08);
+border-color:rgba(180,120,255,.4);
+color:rgb(210,190,255);
+text-shadow:0 0 8px rgba(180,120,255,.35);
+transform:scale(1.05);
+}
+
+@keyframes voidBreathBackground{
+0%{transform:scale(1);opacity:.55;}
+50%{transform:scale(1.05);opacity:.82;}
+100%{transform:scale(1);opacity:.55;}
+}
+
+@keyframes moveStarsSlow{
+from{transform:translate(0,0);}
+to{transform:translate(-10px,-24px);}
+}
+
+@keyframes moveStarsMedium{
+from{transform:translate(0,0);}
+to{transform:translate(-24px,-48px);}
+}
+
+@keyframes moveStarsFast{
+from{transform:translate(0,0);}
+to{transform:translate(-42px,-80px);}
+}
+
+@keyframes largeStarDrift{
+from{transform:translate(0,0);}
+to{transform:translate(-18px,-36px);}
+}
+
+@keyframes twinkleSoft{
+0%{opacity:.34;}
+50%{opacity:.62;}
+100%{opacity:.34;}
+}
+
+@keyframes twinkle{
+0%{opacity:.42;}
+50%{opacity:.78;}
+100%{opacity:.42;}
+}
+
+@keyframes twinkleBright{
+0%{opacity:.38;}
+50%{opacity:.72;}
+100%{opacity:.38;}
+}
+
+@keyframes breatheText{
+0%{
+opacity:.8;
+text-shadow:0 0 5px rgba(255,255,255,.05);
+}
+
+50%{
+opacity:1;
+text-shadow:0 0 18px rgba(255,255,255,.18);
+}
+
+100%{
+opacity:.8;
+text-shadow:0 0 5px rgba(255,255,255,.05);
+}
+}
+
+@media screen and (max-width:768px){
+
+body{
+min-height:100svh;
+}
+
+.container{
+width:90%;
+padding:80px 20px;
+}
+
+.title{
+font-size:20px;
+letter-spacing:3px;
+}
+
+.neptune{
+width:190px;
+height:190px;
+left:5%;
+top:11%;
+}
+
+.poem{
+position:relative;
+right:auto;
+top:auto;
+width:90%;
+margin:60px auto 0 auto;
+text-align:center;
+}
+
+.poem h2{
+text-align:center;
+}
+
+.poem p{
+text-align:center;
+}
+
+.back{
+bottom:18px;
+left:18px;
+font-size:11px;
+}
+
+.mute-btn{
+top:10px;
+right:10px;
+font-size:8px;
+padding:5px 9px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<button id="muteButton" class="mute-btn">♫ SOUND</button>
+
+<div class="star-layer-one"></div>
+<div class="star-layer-two"></div>
+<div class="star-layer-three"></div>
+<div class="large-stars"></div>
+<div class="neptune"></div>
+
+<div class="container">
+<div class="title">THE VOID</div>
+</div>
+
+<div class="poem">
+
+<h2>THE GODDESS OF REALITY</h2>
+
+<p>
+Why do I have everything that I desire?<br>
+Why do I live the life of my dreams?<br>
+Is it because I am loved by the Gods?<br>
+Or is it because I am the Goddess of my reality?
+SL.<br>
+</p>
+
+</div>
+
+<div class="poem">
+
+<h2>May 28th, 2026</h2>
+
+<p>
+Sometimes I think,<br>
+Sometimes I wonder,<br>
+What happens to the rest of the world when I go under?<br>
+Does it really stop spinning?<br>
+Can I really not rest?<br>
+Even if I'm tired,<br>
+To whom should I address?<br>
+Your Honor, I'd like to sit down,<br>
+But why is it that I need your permission?<br>
+Who died and made you King?<br>
+Because surely a Queen would never do such a thing.<br>
+SL.<br>
+</p>
+
+</div>
+
+<div class="poem">
+
+<h2>May 28th, 2026</h2>
+
+<p>
+I decided to make this webpage on Tuesday, May 26th, 2026<br>
+Because I was feeling an itch.<br>
+Deep within my bones,<br>
+Deep within my spirit,<br>
+I needed something tangible,<br>
+Something that said<br>
+<i>"I was here."</i><br>
+So, here it is.<br>
+The sound that you hear,<br>
+I produced it on my own.<br>
+I'm so proud of my mind's digital home.<br>
+SL.<br>
+</p>
+
+</div>
+
+<div class="poem">
+
+<h2>May 28th, 2026</h2>
+
+<p>
+Coding is actually kind of fun.<br>
+I love the fact that I can just sit at my desk and write all of this.<br>
+I love the fact that I built this website.<br>
+I love the fact that I did this.<br>
+SL.<br>
+</p>
+
+</div>
+
+<div class="poem">
+
+<h2>June 14th, 2026</h2>
+
+<p>
+It's been a minute since I last wrote.<br>
+I imagine it'll be like this<br>
+As I do forget to code and update.<br>
+I love it. When I remember it.<br>
+SL.<br>
+</p>
+
+</div>
+
+<div class="poem">
+
+<h2>June 14th, 2026</h2>
+
+<p>
+Something feels strange today.<br>
+I feel this way every once in a while.<br>
+I wonder what it is, but the answer doesn't always quite give.<br>
+Oh well.<br>
+SL.<br>
+</p>
+
+</div>
+
+<div class="poem">
+
+<h2>June 14th, 2026</h2>
+
+<p>
+I feel that I'm at the end of a particularly long chapter<br>
+That's at the end of a pain and heartbreak filled book.<br>
+I've learned many things.<br>
+I've sought after<br>
+The one thing that makes me swoon.<br>
+My life, my purpose.<br>
+I feel it all finally sinking in.<br>
+This is what all the pain and hardship was for;<br>
+So I could rebirth into the person writing this.<br>
+It's bittersweet, really,<br>
+Acknowledging such a major end.<br>
+Sometimes,<br>
+A small part of me wishes things could've been different.<br>
+But, alas,<br>
+This is where we are.<br>
+I must admit,<br>
+I do look forward to what is to come.<br>
+SL.<br>
+</p>
+
+</div>
+
+<div class="poem">
+
+<h2>June 15th, 2026</h2>
+
+<p>
+I keep coming back to this website and I'm just so proud of it.<br>
+I'm so proud of the audio, I'm so proud of the design.<br>
+Did you know I coded this site?<br>
+I'm so creative lol.<br>
+SL.<br>
+</p>
+
+</div>
+
+<div class="poem">
+
+<h2>June 17th, 2026</h2>
+
+<p>
+Michael Jackson is very inspiring.<br>
+I don't idolize anyone, but Michael Jackson...<br>
+Michael Jackson is something else.<br>
+His story was, is very spiritual.<br>
+The struggle, the pull between two identities;<br>
+One as part of a unit, the other as an indivdual.<br>
+Having to choose himself knowing that it'll ruffle some feathers,<br>
+Break some hearts.<br>
+It wasn't easy<br>
+But it needed to be done.<br>
+He freed himself on that stage in 1984 in front of the whole world.<br>
+Freed himself from the chains placed on him by his father.<br>
+It's all very spiritual.<br>
+He had an ongoing tower moment.<br>
+The Devil didn't want to let go,<br>
+But God was stronger.<br>
+God lived in Michael Jackson,<br>
+God spoke through Michael Jackson.<br>
+God was Michael Jackson,<br>
+Michael Jackson was God.<br>
+We are all God,<br>
+& God is all of us.<br>
+SL.
+</p>
+
+</div>
+
+<div class="poem">
+
+<h2>June 18th, 2026</h2>
+
+<p>
+So, the author's copy of <i>Poetic Affirmations</i> arrived yesterday<br>
+& I retreived it from the mailbox today.<br>
+Kinda nervous to open it.<br>
+I have to make sure this site is ready to go online,<br>
+Have to buy the domain,<br>
+Have to set the sale price.<br>
+A lot of backend work goes into being a business owner.<br>
+Oh, also have to make sure the website is formatted for smaller screens.<br>
+I'm nervous kind of.<br>
+I wonder how it'll be received. Geez,<br>
+I feel good though.<br>
+Like, I'm not worried or stressed because it just feels like everything is just going to flow.<br>
+I like that.<br>
+It's taken me years to align with my path and now I have and I just-<br>
+<i>Sigh.</i><br>
+I can't even say that it's disbelief because during those years,<br>
+I was being prepared for this very moment<br>
+& now it's here and I'm just like;<br>
+"Here we are, I guess."<br>
+Like it's not grand to me, it's just my life.<br>
+Two years ago I would've probably been overly excited and losing my mind<br>
+& not that there's anything wrong with being excited,<br>
+But this is literally who I am now, if that makes sense?<br>
+That's the whole point of manifestation, isn't it?<br>
+You become the one that can hold what it is that you want<br>
+& I am the one that can hold what it is that I want.<br>
+So yea, that's why there's no fear or worry or anxiety,<br>
+Because I've already been living in this reality;<br>
+The reality of the Creator of <i>Poetic Affirmations</i>.<br>
+It's got a nice ring to it, yea?<br>
+SL.<br>
+</p>
+
+</div>
+
+<a class="back" href="index.html">RETURN</a>
+
+<audio id="ambientHum" autoplay loop>
+<source src="space-hum.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const hum=document.getElementById("ambientHum");
+const muteButton=document.getElementById("muteButton");
+
+if(hum){
+hum.volume=.30;
+}
+
+if(hum && muteButton){
+muteButton.onclick=()=>{
+hum.muted=!hum.muted;
+muteButton.innerHTML=hum.muted ? "✕ MUTED" : "♫ SOUND";
+};
+}
+</script>
+
+</body>
+</html>

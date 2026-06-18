@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SIDONA'S SPIRIT</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Georgia,serif;
+color:#e8e6e3;
+background:#000;
+overflow:hidden;
+position:relative;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:-12%;
+background:
+radial-gradient(circle at 6% 18%, rgba(120,70,160,.18) 0%, transparent 30%),
+radial-gradient(circle at 92% 16%, rgba(70,120,170,.12) 0%, transparent 32%),
+radial-gradient(circle at 14% 88%, rgba(65,95,160,.14) 0%, transparent 34%),
+radial-gradient(circle at 88% 84%, rgba(135,70,135,.13) 0%, transparent 36%),
+radial-gradient(circle at 58% 34%, rgba(90,65,150,.13) 0%, transparent 38%),
+radial-gradient(circle at 30% 62%, rgba(150,55,120,.09) 0%, transparent 36%),
+radial-gradient(circle at 70% 62%, rgba(120,175,150,.055) 0%, transparent 38%),
+linear-gradient(135deg, rgba(14,10,35,.58), rgba(5,18,35,.38), rgba(28,8,30,.32), rgba(0,0,0,.98));
+animation:breatheBackground 18s ease-in-out infinite;
+z-index:-7;
+}
+
+.star-layer-one{
+position:fixed;
+inset:-10%;
+background-image:
+radial-gradient(circle at 2% 4%, white .38px, transparent .75px),
+radial-gradient(circle at 5% 18%, white .38px, transparent .75px),
+radial-gradient(circle at 8% 32%, white .38px, transparent .75px),
+radial-gradient(circle at 11% 48%, white .38px, transparent .75px),
+radial-gradient(circle at 14% 66%, white .38px, transparent .75px),
+radial-gradient(circle at 17% 82%, white .38px, transparent .75px),
+radial-gradient(circle at 20% 12%, white .38px, transparent .75px),
+radial-gradient(circle at 23% 29%, white .38px, transparent .75px),
+radial-gradient(circle at 26% 44%, white .38px, transparent .75px),
+radial-gradient(circle at 29% 59%, white .38px, transparent .75px),
+radial-gradient(circle at 32% 76%, white .38px, transparent .75px),
+radial-gradient(circle at 35% 91%, white .38px, transparent .75px),
+radial-gradient(circle at 38% 9%, white .38px, transparent .75px),
+radial-gradient(circle at 41% 25%, white .38px, transparent .75px),
+radial-gradient(circle at 44% 41%, white .38px, transparent .75px),
+radial-gradient(circle at 47% 57%, white .38px, transparent .75px),
+radial-gradient(circle at 50% 73%, white .38px, transparent .75px),
+radial-gradient(circle at 53% 89%, white .38px, transparent .75px),
+radial-gradient(circle at 56% 6%, white .38px, transparent .75px),
+radial-gradient(circle at 59% 22%, white .38px, transparent .75px),
+radial-gradient(circle at 62% 38%, white .38px, transparent .75px),
+radial-gradient(circle at 65% 54%, white .38px, transparent .75px),
+radial-gradient(circle at 68% 70%, white .38px, transparent .75px),
+radial-gradient(circle at 71% 86%, white .38px, transparent .75px),
+radial-gradient(circle at 74% 15%, white .38px, transparent .75px),
+radial-gradient(circle at 77% 31%, white .38px, transparent .75px),
+radial-gradient(circle at 80% 47%, white .38px, transparent .75px),
+radial-gradient(circle at 83% 63%, white .38px, transparent .75px),
+radial-gradient(circle at 86% 79%, white .38px, transparent .75px),
+radial-gradient(circle at 89% 95%, white .38px, transparent .75px),
+radial-gradient(circle at 92% 11%, white .38px, transparent .75px),
+radial-gradient(circle at 95% 36%, white .38px, transparent .75px),
+radial-gradient(circle at 98% 68%, white .38px, transparent .75px);
+opacity:.6;
+animation:moveStarsSlow 130s linear infinite, twinkleSoft 9s ease-in-out infinite;
+z-index:-6;
+}
+
+.star-layer-two{
+position:fixed;
+inset:-10%;
+background-image:
+radial-gradient(circle at 4% 8%, white .7px, transparent 1px),
+radial-gradient(circle at 9% 28%, white .6px, transparent 1px),
+radial-gradient(circle at 13% 76%, white .8px, transparent 1px),
+radial-gradient(circle at 18% 42%, white .7px, transparent 1px),
+radial-gradient(circle at 24% 88%, white .8px, transparent 1px),
+radial-gradient(circle at 30% 18%, white .7px, transparent 1px),
+radial-gradient(circle at 36% 67%, white .6px, transparent 1px),
+radial-gradient(circle at 41% 52%, white .8px, transparent 1px),
+radial-gradient(circle at 48% 92%, white .7px, transparent 1px),
+radial-gradient(circle at 52% 14%, white .8px, transparent 1px),
+radial-gradient(circle at 58% 48%, white .6px, transparent 1px),
+radial-gradient(circle at 63% 82%, white .8px, transparent 1px),
+radial-gradient(circle at 70% 43%, white .7px, transparent 1px),
+radial-gradient(circle at 76% 20%, white .8px, transparent 1px),
+radial-gradient(circle at 81% 72%, white .8px, transparent 1px),
+radial-gradient(circle at 88% 35%, white .7px, transparent 1px),
+radial-gradient(circle at 93% 63%, white .8px, transparent 1px),
+radial-gradient(circle at 97% 12%, white .6px, transparent 1px),
+radial-gradient(circle at 6% 44%, white .7px, transparent 1px),
+radial-gradient(circle at 16% 15%, white .6px, transparent 1px),
+radial-gradient(circle at 21% 63%, white .8px, transparent 1px),
+radial-gradient(circle at 27% 31%, white .6px, transparent 1px),
+radial-gradient(circle at 34% 79%, white .7px, transparent 1px),
+radial-gradient(circle at 39% 11%, white .8px, transparent 1px),
+radial-gradient(circle at 46% 38%, white .6px, transparent 1px),
+radial-gradient(circle at 51% 66%, white .8px, transparent 1px),
+radial-gradient(circle at 57% 24%, white .7px, transparent 1px),
+radial-gradient(circle at 64% 57%, white .6px, transparent 1px),
+radial-gradient(circle at 69% 12%, white .8px, transparent 1px),
+radial-gradient(circle at 74% 76%, white .7px, transparent 1px),
+radial-gradient(circle at 79% 51%, white .6px, transparent 1px),
+radial-gradient(circle at 86% 87%, white .8px, transparent 1px),
+radial-gradient(circle at 91% 22%, white .7px, transparent 1px),
+radial-gradient(circle at 96% 41%, white .6px, transparent 1px),
+radial-gradient(circle at 3% 92%, white .7px, transparent 1px),
+radial-gradient(circle at 11% 58%, white .6px, transparent 1px),
+radial-gradient(circle at 19% 6%, white .8px, transparent 1px),
+radial-gradient(circle at 28% 97%, white .7px, transparent 1px),
+radial-gradient(circle at 43% 3%, white .6px, transparent 1px),
+radial-gradient(circle at 61% 96%, white .7px, transparent 1px),
+radial-gradient(circle at 73% 5%, white .8px, transparent 1px),
+radial-gradient(circle at 89% 96%, white .7px, transparent 1px);
+opacity:.76;
+animation:moveStarsMedium 75s linear infinite, twinkle 8s ease-in-out infinite;
+z-index:-5;
+}
+
+.star-layer-three{
+position:fixed;
+inset:-10%;
+background-image:
+radial-gradient(circle at 7% 67%, white 1.1px, transparent 1.6px),
+radial-gradient(circle at 15% 31%, white 1px, transparent 1.5px),
+radial-gradient(circle at 22% 93%, white 1.2px, transparent 1.6px),
+radial-gradient(circle at 29% 58%, white 1px, transparent 1.5px),
+radial-gradient(circle at 37% 6%, white 1.15px, transparent 1.6px),
+radial-gradient(circle at 44% 83%, white 1px, transparent 1.5px),
+radial-gradient(circle at 50% 27%, white 1.2px, transparent 1.7px),
+radial-gradient(circle at 61% 71%, white 1px, transparent 1.5px),
+radial-gradient(circle at 68% 9%, white 1.1px, transparent 1.6px),
+radial-gradient(circle at 77% 55%, white 1.2px, transparent 1.7px),
+radial-gradient(circle at 84% 96%, white 1px, transparent 1.5px),
+radial-gradient(circle at 92% 46%, white 1.15px, transparent 1.6px),
+radial-gradient(circle at 98% 81%, white 1px, transparent 1.5px),
+radial-gradient(circle at 5% 23%, white 1px, transparent 1.5px),
+radial-gradient(circle at 19% 74%, white 1.1px, transparent 1.6px),
+radial-gradient(circle at 33% 36%, white 1px, transparent 1.5px),
+radial-gradient(circle at 55% 90%, white 1.15px, transparent 1.6px),
+radial-gradient(circle at 73% 34%, white 1px, transparent 1.5px),
+radial-gradient(circle at 90% 13%, white 1.1px, transparent 1.6px);
+opacity:.82;
+animation:moveStarsFast 48s linear infinite, twinkleBright 6s ease-in-out infinite;
+z-index:-4;
+}
+
+.large-stars{
+position:fixed;
+inset:0;
+background-image:
+radial-gradient(circle at 12% 19%, rgba(255,255,255,.95) 1.6px, transparent 2.2px),
+radial-gradient(circle at 31% 44%, rgba(255,255,255,.85) 1.4px, transparent 2px),
+radial-gradient(circle at 56% 18%, rgba(255,255,255,.9) 1.7px, transparent 2.4px),
+radial-gradient(circle at 72% 63%, rgba(255,255,255,.82) 1.5px, transparent 2.1px),
+radial-gradient(circle at 87% 28%, rgba(255,255,255,.9) 1.6px, transparent 2.3px),
+radial-gradient(circle at 42% 78%, rgba(255,255,255,.8) 1.4px, transparent 2.1px),
+radial-gradient(circle at 95% 88%, rgba(255,255,255,.86) 1.5px, transparent 2.2px),
+radial-gradient(circle at 18% 91%, rgba(255,255,255,.8) 1.4px, transparent 2.1px),
+radial-gradient(circle at 66% 39%, rgba(255,255,255,.86) 1.5px, transparent 2.2px);
+opacity:.56;
+animation:largeStarDrift 90s linear infinite, twinkleBright 7s ease-in-out infinite;
+z-index:-3;
+}
+
+.neptune{
+position:fixed;
+right:-82px;
+bottom:-78px;
+width:270px;
+height:270px;
+border-radius:50%;
+background:
+radial-gradient(circle at 32% 28%, rgba(205,230,255,.58), rgba(85,125,195,.46) 24%, rgba(28,50,115,.78) 62%, rgba(5,10,30,.96) 100%);
+box-shadow:
+0 0 90px rgba(80,120,200,.24),
+0 0 145px rgba(80,120,200,.12),
+inset -48px -38px 62px rgba(0,0,0,.58);
+filter:blur(.45px);
+opacity:.56;
+z-index:0;
+}
+
+.neptune::after{
+content:"";
+position:absolute;
+inset:82px -32px auto -32px;
+height:22px;
+background:rgba(210,230,255,.13);
+border-radius:50%;
+transform:rotate(-12deg);
+filter:blur(2.5px);
+}
+
+.neptune::before{
+content:"";
+position:absolute;
+inset:-34px;
+border-radius:50%;
+background:rgba(90,130,220,.08);
+filter:blur(24px);
+}
+
+.container{
+text-align:center;
+max-width:600px;
+padding:40px;
+animation:breatheContainer 12s ease-in-out infinite;
+position:relative;
+z-index:2;
+}
+
+h1{
+letter-spacing:4px;
+font-weight:normal;
+margin-bottom:50px;
+font-size:30px;
+animation:breatheText 12s ease-in-out infinite;
+transition:.8s;
+}
+
+h1:hover{
+transform:scale(1.03);
+text-shadow:0 0 22px rgba(255,255,255,.25);
+}
+
+.btn{
+display:block;
+box-sizing:border-box;
+margin:18px auto;
+padding:14px 22px;
+width:300px;
+border:1px solid rgba(255,255,255,.2);
+background:rgba(255,255,255,.02);
+color:#e8e6e3;
+font-family:Georgia,serif;
+font-size:16px;
+text-align:center;
+text-decoration:none;
+letter-spacing:1px;
+transition:.5s;
+cursor:pointer;
+}
+
+.btn:hover{
+background:rgba(255,255,255,.08);
+border-color:rgba(255,255,255,.5);
+transform:scale(1.03);
+}
+
+.sub-btn{
+display:block;
+box-sizing:border-box;
+margin:10px auto;
+padding:10px 18px;
+width:220px;
+border:1px solid rgba(255,255,255,.15);
+background:rgba(255,255,255,.02);
+color:#e8e6e3;
+font-family:Georgia,serif;
+text-align:center;
+text-decoration:none;
+font-size:12px;
+letter-spacing:1px;
+transition:.5s;
+}
+
+.sub-btn:hover{
+background:rgba(255,255,255,.06);
+border-color:rgba(255,255,255,.4);
+transform:scale(1.02);
+}
+
+.sub-buttons{
+display:none;
+margin-top:10px;
+animation:fadeIn 1s ease;
+}
+
+.social-buttons{
+display:flex;
+justify-content:center;
+gap:14px;
+margin-top:18px;
+}
+
+.social-btn{
+padding:6px 10px;
+border:1px solid rgba(255,255,255,.18);
+background:rgba(255,255,255,.025);
+color:#e8e6e3;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:9px;
+letter-spacing:1px;
+transition:.5s;
+min-width:58px;
+height:26px;
+}
+
+.social-btn:hover{
+background:rgba(255,255,255,.08);
+border-color:rgba(180,120,255,.4);
+color:rgb(210,190,255);
+text-shadow:0 0 8px rgba(180,120,255,.35);
+transform:scale(1.06);
+}
+
+.note{
+margin-top:34px;
+font-size:11px;
+opacity:.35;
+transition:.7s;
+cursor:default;
+text-shadow:0 0 4px rgba(255,255,255,.03);
+}
+
+.note:hover{
+opacity:.95;
+color:rgb(210,190,255);
+text-shadow:
+0 0 10px rgba(180,120,255,.45),
+0 0 22px rgba(180,120,255,.25);
+transform:scale(1.03);
+}
+
+.mute-btn{
+position:fixed;
+top:12px;
+right:12px;
+z-index:9999;
+padding:6px 10px;
+font-size:9px;
+letter-spacing:2px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.15);
+color:#e8e6e3;
+font-family:Georgia,serif;
+cursor:pointer;
+transition:.6s;
+}
+
+.mute-btn:hover{
+background:rgba(255,255,255,.08);
+border-color:rgba(180,120,255,.4);
+color:rgb(210,190,255);
+text-shadow:0 0 8px rgba(180,120,255,.35);
+transform:scale(1.05);
+}
+
+@keyframes breatheBackground{
+0%{transform:scale(1);opacity:.72;}
+50%{transform:scale(1.05);opacity:.88;}
+100%{transform:scale(1);opacity:.72;}
+}
+
+@keyframes moveStarsSlow{
+from{transform:translate(0,0);}
+to{transform:translate(-10px,-24px);}
+}
+
+@keyframes moveStarsMedium{
+from{transform:translate(0,0);}
+to{transform:translate(-24px,-48px);}
+}
+
+@keyframes moveStarsFast{
+from{transform:translate(0,0);}
+to{transform:translate(-42px,-80px);}
+}
+
+@keyframes largeStarDrift{
+from{transform:translate(0,0);}
+to{transform:translate(-18px,-36px);}
+}
+
+@keyframes twinkleSoft{
+0%{opacity:.38;}
+50%{opacity:.68;}
+100%{opacity:.38;}
+}
+
+@keyframes twinkle{
+0%{opacity:.48;}
+50%{opacity:.88;}
+100%{opacity:.48;}
+}
+
+@keyframes twinkleBright{
+0%{opacity:.42;}
+50%{opacity:.82;}
+100%{opacity:.42;}
+}
+
+@keyframes breatheContainer{
+0%{transform:scale(1);}
+50%{transform:scale(1.01);}
+100%{transform:scale(1);}
+}
+
+@keyframes breatheText{
+0%{opacity:.8;text-shadow:0 0 5px rgba(255,255,255,.05);}
+50%{opacity:1;text-shadow:0 0 18px rgba(255,255,255,.18);}
+100%{opacity:.8;text-shadow:0 0 5px rgba(255,255,255,.05);}
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(-5px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@media screen and (max-width:768px){
+
+body{
+min-height:100svh;
+height:100svh;
+}
+
+.container{
+width:90%;
+padding:25px;
+}
+
+h1{
+font-size:22px;
+letter-spacing:2px;
+margin-bottom:40px;
+}
+
+.btn{
+width:85%;
+max-width:280px;
+padding:13px 18px;
+font-size:13px;
+}
+
+.sub-btn{
+width:70%;
+max-width:200px;
+font-size:11px;
+}
+
+.neptune{
+width:180px;
+height:180px;
+right:-58px;
+bottom:-52px;
+}
+
+.neptune::after{
+inset:55px -22px auto -22px;
+height:15px;
+}
+
+.neptune::before{
+inset:-25px;
+}
+
+.social-buttons{
+gap:10px;
+margin-top:16px;
+}
+
+.social-btn{
+font-size:8px;
+min-width:52px;
+height:24px;
+padding:5px 8px;
+}
+
+.note{
+font-size:10px;
+margin-top:28px;
+}
+
+.mute-btn{
+top:10px;
+right:10px;
+font-size:8px;
+padding:5px 9px;
+}
+
+
+}
+</style>
+</head>
+
+<body>
+
+<button id="muteButton" class="mute-btn">♫ SOUND</button>
+
+<div class="star-layer-one"></div>
+<div class="star-layer-two"></div>
+<div class="star-layer-three"></div>
+<div class="large-stars"></div>
+<div class="neptune"></div>
+
+<div class="container">
+
+<h1>SIDONA'S SPIRIT</h1>
+
+<button class="btn" onclick="toggleShop()" type="button">
+POETIC AFFIRMATIONS
+</button>
+
+<div id="shop" class="sub-buttons">
+
+<a class="sub-btn" href="https://sidonaspirit.gumroad.com/l/kcaxw" target="_blank">
+DIGITAL BOOK
+</a>
+
+<a class="sub-btn" href="https://shop.ingramspark.com/b/084?params=cG63oOwSUaOlpeQLAZ7QUDiBHxCF5wqLF5MstTAPg3w" target="_blank">
+PHYSICAL BOOK
+</a>
+
+</div>
+
+<a class="btn" href="void.html">
+ENTER THE VOID
+</a>
+
+<div class="social-buttons">
+
+<a class="social-btn" href="https://www.tiktok.com/@sidonaspirit?is_from_webapp=1&sender_device=pc" target="_blank">
+TikTok
+</a>
+
+<a class="social-btn" href="http://www.youtube.com/@sidonaspirit" target="_blank">
+YouTube
+</a>
+
+</div>
+
+<div class="note">a journey into sidona's mind</div>
+
+</div>
+
+<audio id="ambientHum" autoplay loop>
+<source src="space-hum.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function toggleShop(){
+const shop=document.getElementById("shop");
+
+if(shop.style.display==="block"){
+shop.style.display="none";
+}else{
+shop.style.display="block";
+}
+}
+
+const hum=document.getElementById("ambientHum");
+const muteButton=document.getElementById("muteButton");
+
+if(hum){
+hum.volume=0;
+
+let fade=setInterval(()=>{
+if(hum.volume<.30){
+hum.volume+=.01;
+}else{
+clearInterval(fade);
+}
+},300);
+}
+
+if(hum && muteButton){
+muteButton.onclick=()=>{
+hum.muted=!hum.muted;
+muteButton.innerHTML=hum.muted ? "✕ MUTED" : "♫ SOUND";
+};
+}
+</script>
+
+</body>
+</html>
