@@ -373,6 +373,32 @@ text-shadow:0 0 5px rgba(255,255,255,.05);
 }
 }
 
+.pagination{
+text-align:center;
+margin:60px 0;
+}
+
+.pagination button{
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.15);
+color:#e8e6e3;
+padding:10px 18px;
+margin:0 10px;
+font-family:Georgia,serif;
+cursor:pointer;
+transition:.4s;
+}
+
+.pagination button:hover{
+background:rgba(255,255,255,.08);
+}
+
+#pageNumber{
+opacity:.6;
+font-size:12px;
+letter-spacing:1px;
+}
+  
 @media screen and (max-width:768px){
 
 body{
@@ -444,6 +470,8 @@ padding:5px 9px;
 <div class="title">THE VOID</div>
 </div>
 
+<div id="poems">
+  
 <div class="poem">
 
 <h2>THE GODDESS OF REALITY</h2>
@@ -655,8 +683,70 @@ SL.<br>
 
 </div>
 
+<div class="poem">
+
+<h2>June 18th, 2026</h2>
+
+<p>
+Ok this is just a test,<br>
+I scripted that there will be ten entries per page and I just wamt to ensure that I got it correct.<br>
+SL.<br>
+</p>
+
+</div>
+  
+</div>
+
+<div class="pagination">
+  <button onclick="prevPage()">Previous</button>
+  <span id="pageNumber"></span>
+  <button onclick="nextPage()">Next</button>
+</div>
+
 <a class="back" href="index.html">RETURN</a>
 
+<script>
+const poemsPerPage = 10;
+let currentPage = 1;
+
+const poems = document.querySelectorAll(".poem");
+const totalPages = Math.ceil(poems.length / poemsPerPage);
+
+function showPage(page){
+  poems.forEach((poem,index)=>{
+    poem.style.display="none";
+
+    const start=(page-1)*poemsPerPage;
+    const end=start+poemsPerPage;
+
+    if(index>=start && index<end){
+      poem.style.display="block";
+    }
+  });
+
+  document.getElementById("pageNumber").textContent =
+    `Page ${currentPage} of ${totalPages}`;
+}
+
+function nextPage(){
+  if(currentPage<totalPages){
+    currentPage++;
+    showPage(currentPage);
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+}
+
+function prevPage(){
+  if(currentPage>1){
+    currentPage--;
+    showPage(currentPage);
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+}
+
+showPage(currentPage);
+</script>
+  
 <audio id="ambientHum" autoplay loop>
 <source src="space-hum.mp3" type="audio/mpeg">
 </audio>
